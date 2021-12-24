@@ -55,12 +55,14 @@ namespace saitho.Calculator.Actions
         public override void KeyPressed(KeyPayload payload)
         {
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Number: {this.settings.Number}");
-            //string operation = MemoryStore.getInstance().get("operation");
-            //if (operation == null)
-            //{
-            //    Connection.ShowAlert();
-            //    return;
-            //}
+            
+            try
+            {
+                MemoryStore.getInstance().get("operation");
+            } catch {
+                Connection.ShowAlert();
+                return;
+            }
 
             // add to number in memory
             int currentNumber = 0;

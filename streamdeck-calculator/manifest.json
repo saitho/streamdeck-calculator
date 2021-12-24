@@ -2,6 +2,34 @@
   "Actions": [
     {
       "Icon": "Images/icon",
+      "Name": "Add Operation",
+      "States": [
+        {
+          "Image": "Images/keyPlus",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Set calculator in addition mode",
+      "UUID": "com.saitho.calculator.operationadd"
+    },
+    {
+      "Icon": "Images/icon",
+      "Name": "Subtract Operation",
+      "States": [
+        {
+          "Image": "Images/keyMinus",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Set calculator in subtraction mode",
+      "UUID": "com.saitho.calculator.operationsubtract"
+    },
+    {
+      "Icon": "Images/icon",
       "Name": "Number",
       "States": [
         {

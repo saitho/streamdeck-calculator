@@ -21,5 +21,7 @@ namespace saitho.Calculator
             return dictionary[key];
         }
         public void set(string key, string value) { dictionary[key] = value; }
+
+        public void remove(string key) { dictionary.Remove(key);}
     }
 }
