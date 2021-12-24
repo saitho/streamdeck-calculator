@@ -1,0 +1,36 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup MSBuild Path
+      uses: microsoft/setup-msbuild@v1.1
+       
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+     
+    - name: Restore NuGet Packages
+      run: nuget restore streamdeck-calculator.sln
+ 
+    - name: Build and Publish App
+      run: msbuild streamdeck-calculator.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile /p:OutputPath=..\com.saitho.calculator.sdPlugin
+ 
+    - name: StreamDeck Distribution Tool
+      uses: AdamCarballo/streamdeck-distribution-tool@v1
+      with:
+        input: com.saitho.calculator.sdPlugin
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: published_app
+        path: com.saitho.calculator.streamDeckPlugin
