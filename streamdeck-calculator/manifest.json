@@ -2,6 +2,21 @@
   "Actions": [
     {
       "Icon": "Images/icon",
+      "Name": "Number",
+      "States": [
+        {
+          "Image": "Images/key",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Set a number",
+      "UUID": "com.saitho.calculator.number",
+      "PropertyInspectorPath": "PropertyInspector/Number/Number.html"
+    },
+    {
+      "Icon": "Images/icon",
       "Name": "Text File Updater",
       "States": [
         {
