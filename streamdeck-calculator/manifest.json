@@ -2,6 +2,20 @@
   "Actions": [
     {
       "Icon": "Images/icon",
+      "Name": "Calculate Operation",
+      "States": [
+        {
+          "Image": "Images/keyEquals",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Calculate the result and write it to the result file",
+      "UUID": "com.saitho.calculator.calculate"
+    },
+    {
+      "Icon": "Images/icon",
       "Name": "Add Operation",
       "States": [
         {

@@ -25,7 +25,7 @@ namespace saitho.Calculator.Actions
         public override void KeyPressed(KeyPayload payload)
         {
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Subtract operation pressed");
-            MemoryStore.getInstance().set("operation", "-");
+            DataStorage.getInstance().readMemory("operation", "-");
             Connection.ShowOk();
         }
 

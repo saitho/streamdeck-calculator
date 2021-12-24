@@ -58,7 +58,7 @@ namespace saitho.Calculator.Actions
             
             try
             {
-                MemoryStore.getInstance().get("operation");
+                DataStorage.getInstance().readMemory("operation");
             } catch {
                 Connection.ShowAlert();
                 return;
@@ -68,12 +68,12 @@ namespace saitho.Calculator.Actions
             int currentNumber = 0;
             try
             {
-                currentNumber = int.Parse(MemoryStore.getInstance().get("currentNumber"));
+                currentNumber = int.Parse(DataStorage.getInstance().readMemory("currentNumber"));
             } catch { }
 
             int newNumber = currentNumber * 10 + this.settings.Number;
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber}");
-            MemoryStore.getInstance().set("currentNumber", newNumber.ToString());
+            DataStorage.getInstance().readMemory("currentNumber", newNumber.ToString());
             Connection.ShowOk();
         }
 
