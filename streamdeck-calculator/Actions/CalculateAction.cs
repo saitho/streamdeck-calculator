@@ -29,7 +29,9 @@ namespace saitho.Calculator.Actions
             try
             {
                 operation = data.readMemory("operation");
-            } catch {
+            }
+            catch
+            {
                 Connection.ShowAlert();
                 return;
             }
@@ -53,7 +55,9 @@ namespace saitho.Calculator.Actions
             try
             {
                 currentNumber = int.Parse(data.readMemory("currentNumber"));
-            } catch {
+            }
+            catch
+            {
                 Connection.ShowAlert();
                 return;
             }
@@ -64,7 +68,8 @@ namespace saitho.Calculator.Actions
             if (operation == "+")
             {
                 storedNumber += currentNumber;
-            } else if (operation == "-")
+            }
+            else if (operation == "-")
             {
                 storedNumber -= currentNumber;
             }

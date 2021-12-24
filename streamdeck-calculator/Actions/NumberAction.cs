@@ -55,11 +55,12 @@ namespace saitho.Calculator.Actions
         public override void KeyPressed(KeyPayload payload)
         {
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Number: {this.settings.Number}");
-            
             try
             {
                 DataStorage.getInstance().readMemory("operation");
-            } catch {
+            }
+            catch
+            {
                 Connection.ShowAlert();
                 return;
             }
@@ -69,7 +70,10 @@ namespace saitho.Calculator.Actions
             try
             {
                 currentNumber = int.Parse(DataStorage.getInstance().readMemory("currentNumber"));
-            } catch { }
+            }
+            catch
+            {
+            }
 
             int newNumber = currentNumber * 10 + this.settings.Number;
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber}");

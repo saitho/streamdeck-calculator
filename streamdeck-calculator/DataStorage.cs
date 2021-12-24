@@ -9,7 +9,8 @@ namespace saitho.Calculator
 
         protected static DataStorage instance = null;
 
-        public static DataStorage getInstance() {
+        public static DataStorage getInstance()
+        {
             if (instance == null)
             {
                 instance = new DataStorage();

@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
-    <meta name=apple-mobile-web-app-capable content=yes>
-    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>BarRaider's Text File Updater</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/barraider/streamdeck-easypi@latest/src/sdpi.css">
     <script src="https://cdn.jsdelivr.net/gh/barraider/streamdeck-easypi@latest/src/sdtools.common.js"></script>
@@ -20,12 +20,6 @@
             <input class="sdpi-item-value sdProperty hasFileButton" disabled value="" id="outputFileName">
             <button class="max100 leftMargin0" onclick="openSaveFilePicker('Counter File Name', 'Text files (*.txt)|*.txt|All files (*.*)|*.*', 'outputFileName');">...</button>
         </div>
-        <!---
-    <div class="sdpi-item" id="dvTitlePrefix">
-        <div class="sdpi-item-label">Input Text</div>
-        <input class="sdpi-item-value sdProperty" placeholder="" value="" id="inputString" oninput="setSettings()">
-    </div>
-        -->
         <div type="textarea" class="sdpi-item" id="dvTitlePrefix">
             <div class="sdpi-item-label">Input Text</div>
             <span class="sdpi-item-value textarea doubleLineTextArea">

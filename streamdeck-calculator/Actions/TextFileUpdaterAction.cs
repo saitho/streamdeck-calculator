@@ -76,11 +76,12 @@ namespace saitho.Calculator.Actions
             SaveSettings();
         }
 
-        public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
+        public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload)
+        {
+        }
 
         #region Private Methods
 
-       
         private void SaveInputStringToFile()
         {
             try

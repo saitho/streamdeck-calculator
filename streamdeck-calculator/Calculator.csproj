@@ -137,10 +137,8 @@
     <Content Include="PropertyInspector\Number\Number.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="PropertyInspector\TextFileUpdater\TextFileUpdater.html" />
     <Content Include="PropertyInspector\TextFileUpdater.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PropertyInspector\TextFileUpdater\TextFileUpdater.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
