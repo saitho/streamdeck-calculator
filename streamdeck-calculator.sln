@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "streamdeck-calculator\Calculator.csproj", "{7B8FE426-BC88-4E6C-B1AC-7CB2AA87DF3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B8FE426-BC88-4E6C-B1AC-7CB2AA87DF3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8FE426-BC88-4E6C-B1AC-7CB2AA87DF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8FE426-BC88-4E6C-B1AC-7CB2AA87DF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8FE426-BC88-4E6C-B1AC-7CB2AA87DF3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28B90BEB-3F36-421F-9035-EA42AB01678E}
+	EndGlobalSection
+EndGlobal

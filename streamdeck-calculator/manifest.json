@@ -1,0 +1,38 @@
+{
+  "Actions": [
+    {
+      "Icon": "Images/icon",
+      "Name": "Text File Updater",
+      "States": [
+        {
+          "Image": "Images/key",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Overwrites the contents of a text file with a predefined string. Use to change overlay text during Stream",
+      "UUID": "com.saitho.calculator.textfileupdater",
+      "PropertyInspectorPath": "PropertyInspector/TextFileUpdater/TextFileUpdater.html"
+    }
+  ],
+  "Author": "saitho",
+  "Description": "Calculator for Stream Deck",
+  "Name": "Calculator",
+  "Icon": "Images/pluginIcon",
+  "URL": "https://saitho.me/",
+  "Version": "1.0",
+  "CodePath": "com.saitho.calculator",
+  "Category": "Calculator",
+  "CategoryIcon": "Images/categoryIcon",
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "SDKVersion": 2,
+  "Software": {
+    "MinimumVersion": "5.0"
+  }
+}
