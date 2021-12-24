@@ -69,14 +69,7 @@ namespace saitho.Calculator
                 Directory.CreateDirectory(fullFileDirName);
             }
 
-            using (var fs = File.Open(fullFilePath, FileMode.OpenOrCreate, FileAccess.Write))
-            {
-                using (var sw = new StreamWriter(fs))
-                {
-                    sw.Write(content);
-                }
-                fs.Close();
-            }
+            File.WriteAllText(fullFilePath, content);
         }
     }
 }

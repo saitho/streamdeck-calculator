@@ -75,7 +75,10 @@ namespace saitho.Calculator.Actions
             {
             }
 
-            int newNumber = currentNumber * 10 + this.settings.Number;
+            double numberLength = this.settings.Number == 0 ? 1 : System.Math.Floor(System.Math.Log10(this.settings.Number)) + 1;
+            Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - numberLength: {numberLength}");
+            
+            int newNumber = currentNumber * (int)System.Math.Pow(10.0, numberLength) + this.settings.Number;
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber}");
             DataStorage.getInstance().readMemory("currentNumber", newNumber.ToString());
             Connection.ShowOk();

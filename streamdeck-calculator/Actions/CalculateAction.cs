@@ -62,20 +62,20 @@ namespace saitho.Calculator.Actions
                 return;
             }
 
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Stored number: {storedNumber}, Applied number: {currentNumber}, Operation: {operation}");
-
             int newNumber = storedNumber;
             if (operation == "+")
             {
-                storedNumber += currentNumber;
+                newNumber += currentNumber;
             }
             else if (operation == "-")
             {
-                storedNumber -= currentNumber;
+                newNumber -= currentNumber;
             }
 
+            Logger.Instance.LogMessage(TracingLevel.INFO, $"CALCULATE - {storedNumber} {operation} {currentNumber} = {newNumber}");
+
             // Store number to file
-            data.writeFile(this.resultFileName, storedNumber.ToString());
+            data.writeFile(this.resultFileName, newNumber.ToString());
 
             data.deleteMemory("operation");
             data.deleteMemory("currentNumber");
