@@ -1,7 +1,7 @@
 {
   "Actions": [
     {
-      "Icon": "Images/icon",
+      "Icon": "Images/iconEquals",
       "Name": "Calculate Operation",
       "States": [
         {
@@ -15,7 +15,7 @@
       "UUID": "com.saitho.calculator.calculate"
     },
     {
-      "Icon": "Images/icon",
+      "Icon": "Images/iconPlus",
       "Name": "Add Operation",
       "States": [
         {
@@ -29,7 +29,7 @@
       "UUID": "com.saitho.calculator.operationadd"
     },
     {
-      "Icon": "Images/icon",
+      "Icon": "Images/iconMinus",
       "Name": "Subtract Operation",
       "States": [
         {
@@ -43,13 +43,13 @@
       "UUID": "com.saitho.calculator.operationsubtract"
     },
     {
-      "Icon": "Images/icon",
+      "Icon": "Images/iconNumber",
       "Name": "Number",
       "States": [
         {
           "Image": "Images/key",
           "TitleAlignment": "middle",
-          "FontSize": "12"
+          "FontSize": "16"
         }
       ],
       "SupportedInMultiActions": true,
