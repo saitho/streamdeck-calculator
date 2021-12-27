@@ -1,5 +1,7 @@
 ﻿using BarRaider.SdTools;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 /**
  * Set Action
@@ -27,12 +29,8 @@ namespace saitho.Calculator.Actions
         }
 
         #region Private Members
-
         private readonly PluginSettings settings;
-
         #endregion
-
-        protected string resultFileName = "result.txt";
 
         public SetResultAction(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
@@ -57,7 +55,7 @@ namespace saitho.Calculator.Actions
             Logger.Instance.LogMessage(TracingLevel.INFO, $"SETRESULT - Setting result to {this.settings.Number}");
 
             // Store number to file
-            data.writeFile(this.resultFileName, this.settings.Number.ToString());
+            data.writeResultFile(this.settings.Number.ToString());
             Connection.ShowOk();
         }
 
@@ -65,8 +63,21 @@ namespace saitho.Calculator.Actions
 
         public override void OnTick() { }
 
-        public override void ReceivedSettings(ReceivedSettingsPayload payload) { }
+        public override void ReceivedSettings(ReceivedSettingsPayload payload) {
+            Logger.Instance.LogMessage(TracingLevel.INFO, "ReceivedSettings");
+            Tools.AutoPopulateSettings(settings, payload.Settings);
+            SaveSettings();
+        }
 
         public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
+
+
+
+        #region Private Methods
+        private Task SaveSettings()
+        {
+            return Connection.SetSettingsAsync(JObject.FromObject(settings));
+        }
+        #endregion
     }
 }
