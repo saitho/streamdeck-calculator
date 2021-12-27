@@ -43,6 +43,21 @@
       "UUID": "com.saitho.calculator.operationsubtract"
     },
     {
+      "Icon": "Images/iconSet",
+      "Name": "Set",
+      "States": [
+        {
+          "Image": "Images/keySet",
+          "TitleAlignment": "bottom",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Set a number in result",
+      "UUID": "com.saitho.calculator.set",
+      "PropertyInspectorPath": "PropertyInspector/Set/Set.html"
+    },
+    {
       "Icon": "Images/iconNumber",
       "Name": "Number",
       "States": [
