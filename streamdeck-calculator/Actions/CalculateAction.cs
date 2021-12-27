@@ -11,8 +11,6 @@ namespace saitho.Calculator.Actions
     [PluginActionId("com.saitho.calculator.calculate")]
     public class CalculateAction : PluginBase
     {
-        protected string resultFileName = "result.txt";
-
         public CalculateAction(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
         }
@@ -37,11 +35,11 @@ namespace saitho.Calculator.Actions
             }
 
             int storedNumber = 0;
-            if (data.hasFile(this.resultFileName))
+            if (data.hasResultFile())
             {
                 try
                 {
-                    storedNumber = int.Parse(data.readFile(this.resultFileName));
+                    storedNumber = int.Parse(data.readResultFile());
                 }
                 catch
                 {
@@ -75,7 +73,7 @@ namespace saitho.Calculator.Actions
             Logger.Instance.LogMessage(TracingLevel.INFO, $"CALCULATE - {storedNumber} {operation} {currentNumber} = {newNumber}");
 
             // Store number to file
-            data.writeFile(this.resultFileName, newNumber.ToString());
+            data.writeResultFile(newNumber.ToString());
 
             data.deleteMemory("operation");
             data.deleteMemory("currentNumber");

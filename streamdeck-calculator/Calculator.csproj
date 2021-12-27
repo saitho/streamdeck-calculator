@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\AbstractStatefulAction.cs" />
+    <Compile Include="Actions\ResultAction.cs" />
     <Compile Include="Actions\SetResultAction.cs" />
     <Compile Include="Actions\CalculateAction.cs" />
     <Compile Include="Actions\AbstractOperationAction.cs" />

@@ -58,6 +58,20 @@
       "PropertyInspectorPath": "PropertyInspector/Set/Set.html"
     },
     {
+      "Icon": "Images/iconResult",
+      "Name": "Result",
+      "States": [
+        {
+          "Image": "Images/noicon",
+          "TitleAlignment": "center",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Tooltip": "Show current result",
+      "UUID": "com.saitho.calculator.result"
+    },
+    {
       "Icon": "Images/iconNumber",
       "Name": "Number",
       "States": [

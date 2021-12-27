@@ -9,6 +9,9 @@ namespace saitho.Calculator
 
         protected static DataStorage instance = null;
 
+        // File names
+        protected string resultFileName = "result.txt";
+
         public static DataStorage getInstance()
         {
             if (instance == null)
@@ -70,6 +73,21 @@ namespace saitho.Calculator
             }
 
             File.WriteAllText(fullFilePath, content);
+        }
+
+        public bool hasResultFile()
+        {
+            return hasFile(resultFileName);
+        }
+
+        public string readResultFile()
+        {
+            return readFile(resultFileName);
+        }
+
+        public void writeResultFile(string content)
+        {
+            writeFile(resultFileName, content);
         }
     }
 }
