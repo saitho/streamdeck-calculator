@@ -8,33 +8,13 @@
 namespace saitho.Calculator.Actions
 {
     [PluginActionId("com.saitho.calculator.operationsubtract")]
-    public class SubtractOperationAction : PluginBase
+    public class SubtractOperationAction : AbstractOperationAction
     {
-        #region Private Members
+        protected override string OperationChar => "-";
+        protected override string BtnFilePath => @"images\keyMinus.png";
 
-        #endregion
         public SubtractOperationAction(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
         }
-
-        public override void Dispose()
-        {
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Destructor called");
-        }
-
-        public override void KeyPressed(KeyPayload payload)
-        {
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Subtract operation pressed");
-            DataStorage.getInstance().readMemory("operation", "-");
-            Connection.ShowOk();
-        }
-
-        public override void KeyReleased(KeyPayload payload) { }
-
-        public override void OnTick() { }
-
-        public override void ReceivedSettings(ReceivedSettingsPayload payload) { }
-
-        public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
     }
 }

@@ -85,7 +85,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\AbstractStatefulAction.cs" />
     <Compile Include="Actions\CalculateAction.cs" />
+    <Compile Include="Actions\AbstractOperationAction.cs" />
     <Compile Include="Actions\SubtractOperationAction.cs" />
     <Compile Include="Actions\AddOperationAction.cs" />
     <Compile Include="Actions\NumberAction.cs" />

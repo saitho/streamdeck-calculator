@@ -8,33 +8,13 @@
 namespace saitho.Calculator.Actions
 {
     [PluginActionId("com.saitho.calculator.operationadd")]
-    public class AddOperationAction : PluginBase
+    public class AddOperationAction : AbstractOperationAction
     {
-        #region Private Members
+        protected override string OperationChar => "+";
+        protected override string BtnFilePath => @"images\keyPlus.png";
 
-        #endregion
         public AddOperationAction(SDConnection connection, InitialPayload payload) : base(connection, payload)
         {
         }
-
-        public override void Dispose()
-        {
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Destructor called");
-        }
-
-        public override void KeyPressed(KeyPayload payload)
-        {
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Add operation pressed");
-            DataStorage.getInstance().readMemory("operation", "+");
-            Connection.ShowOk();
-        }
-
-        public override void KeyReleased(KeyPayload payload) { }
-
-        public override void OnTick() { }
-
-        public override void ReceivedSettings(ReceivedSettingsPayload payload) { }
-
-        public override void ReceivedGlobalSettings(ReceivedGlobalSettingsPayload payload) { }
     }
 }
