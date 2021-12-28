@@ -64,21 +64,36 @@ namespace saitho.Calculator.Actions
                 return;
             }
 
-            // add to number in memory
-            int currentNumber = 0;
+            bool decimalMode = false;
             try
             {
-                currentNumber = int.Parse(DataStorage.getInstance().readMemory("currentNumber"));
+                DataStorage.getInstance().readMemory("decimalMode");
+                decimalMode = true;
             }
             catch
             {
             }
 
-            double numberLength = this.settings.Number == 0 ? 1 : System.Math.Floor(System.Math.Log10(this.settings.Number)) + 1;
-            
-            int newNumber = currentNumber * (int)System.Math.Pow(10.0, numberLength) + this.settings.Number;
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber}");
-            DataStorage.getInstance().readMemory("currentNumber", newNumber.ToString());
+            string memoryName = decimalMode ? "currentDecimalNumber" : "currentNumber";
+
+            // add to number in memory
+            string currentNumber = "0";
+            try
+            {
+                currentNumber = int.Parse(DataStorage.getInstance().readMemory(memoryName)).ToString();
+            }
+            catch
+            {
+            }
+
+            if (!decimalMode && currentNumber == "0")
+            {
+                currentNumber = "";
+            }
+
+            string newNumber = currentNumber.ToString() + this.settings.Number.ToString();
+            Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber} ({memoryName})");
+            DataStorage.getInstance().writeMemory(memoryName, newNumber.ToString());
             Connection.ShowOk();
         }
 

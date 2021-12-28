@@ -30,7 +30,7 @@ namespace saitho.Calculator
         {
             return dictionary.ContainsKey(key);
         }
-        public void readMemory(string key, string value) { dictionary[key] = value; }
+        public void writeMemory(string key, string value) { dictionary[key] = value; }
 
         public void deleteMemory(string key) { dictionary.Remove(key); }
 

@@ -23,7 +23,7 @@ namespace saitho.Calculator.Actions
         public override void KeyPressed(KeyPayload payload)
         {
             Logger.Instance.LogMessage(TracingLevel.INFO, $"{OperationChar} operation pressed");
-            DataStorage.getInstance().readMemory("operation", OperationChar);
+            DataStorage.getInstance().writeMemory("operation", OperationChar);
         }
 
         public override void Dispose()

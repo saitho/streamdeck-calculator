@@ -34,12 +34,22 @@ namespace saitho.Calculator.Actions
                 return;
             }
 
-            int storedNumber = 0;
+            bool decimalMode = false;
+            try
+            {
+                DataStorage.getInstance().readMemory("decimalMode");
+                decimalMode = true;
+            }
+            catch
+            {
+            }
+
+            float storedNumber = 0;
             if (data.hasResultFile())
             {
                 try
                 {
-                    storedNumber = int.Parse(data.readResultFile());
+                    storedNumber = float.Parse(data.readResultFile());
                 }
                 catch
                 {
@@ -49,10 +59,16 @@ namespace saitho.Calculator.Actions
                 }
             }
 
-            int currentNumber = 0;
+            float currentNumber;
             try
             {
-                currentNumber = int.Parse(data.readMemory("currentNumber"));
+                currentNumber = float.Parse(data.readMemory("currentNumber"));
+                if (decimalMode)
+                {
+                    int currentDecimalNumber = int.Parse(data.readMemory("currentDecimalNumber"));
+                    double numberLength = currentDecimalNumber == 0 ? 1 : System.Math.Floor(System.Math.Log10(currentDecimalNumber)) + 1;
+                    currentNumber += currentDecimalNumber / (float)System.Math.Pow(10.0, numberLength);
+                }
             }
             catch
             {
@@ -60,7 +76,7 @@ namespace saitho.Calculator.Actions
                 return;
             }
 
-            int newNumber = storedNumber;
+            float newNumber = storedNumber;
             if (operation == "+")
             {
                 newNumber += currentNumber;
@@ -77,6 +93,8 @@ namespace saitho.Calculator.Actions
 
             data.deleteMemory("operation");
             data.deleteMemory("currentNumber");
+            data.deleteMemory("currentDecimalNumber");
+            data.deleteMemory("decimalMode");
             Connection.ShowOk();
         }
 

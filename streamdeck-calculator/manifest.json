@@ -101,6 +101,20 @@
       "PropertyInspectorPath": "PropertyInspector/Number/Number.html"
     },
     {
+      "Icon": "Images/iconPoint",
+      "Name": "Decimal point",
+      "States": [
+        {
+          "Image": "Images/keyPoint",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Set a decimal point",
+      "UUID": "com.saitho.calculator.point"
+    },
+    {
       "Icon": "Images/icon",
       "Name": "Text File Updater",
       "States": [
