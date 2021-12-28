@@ -65,9 +65,9 @@ namespace saitho.Calculator.Actions
                 currentNumber = float.Parse(data.readMemory("currentNumber"));
                 if (decimalMode)
                 {
-                    int currentDecimalNumber = int.Parse(data.readMemory("currentDecimalNumber"));
-                    double numberLength = currentDecimalNumber == 0 ? 1 : System.Math.Floor(System.Math.Log10(currentDecimalNumber)) + 1;
-                    currentNumber += currentDecimalNumber / (float)System.Math.Pow(10.0, numberLength);
+                    string currentDecimalNumber = data.readMemory("currentDecimalNumber");
+                    double numberLength = currentDecimalNumber.Length;
+                    currentNumber += int.Parse(currentDecimalNumber) / (float)System.Math.Pow(10.0, numberLength);
                 }
             }
             catch

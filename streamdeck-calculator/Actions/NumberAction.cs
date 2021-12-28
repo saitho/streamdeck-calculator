@@ -21,13 +21,13 @@ namespace saitho.Calculator.Actions
             {
                 PluginSettings instance = new PluginSettings
                 {
-                    Number = 0
+                    Number = "0"
                 };
                 return instance;
             }
 
             [JsonProperty(PropertyName = "number")]
-            public int Number { get; set; }
+            public string Number { get; set; }
         }
 
         #region Private Members
@@ -77,23 +77,24 @@ namespace saitho.Calculator.Actions
             string memoryName = decimalMode ? "currentDecimalNumber" : "currentNumber";
 
             // add to number in memory
-            string currentNumber = "0";
+            string currentNumber = "";
             try
             {
-                currentNumber = int.Parse(DataStorage.getInstance().readMemory(memoryName)).ToString();
+                currentNumber = DataStorage.getInstance().readMemory(memoryName);
+                if (!decimalMode)
+                {
+                    // parse integer number just to be safe.
+                    // do not parse in decimalMode as we will lose leading 0s
+                    currentNumber = int.Parse(currentNumber).ToString();
+                }
             }
             catch
             {
             }
 
-            if (!decimalMode && currentNumber == "0")
-            {
-                currentNumber = "";
-            }
-
-            string newNumber = currentNumber.ToString() + this.settings.Number.ToString();
+            string newNumber = currentNumber.ToString() + this.settings.Number;
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber} ({memoryName})");
-            DataStorage.getInstance().writeMemory(memoryName, newNumber.ToString());
+            DataStorage.getInstance().writeMemory(memoryName, newNumber);
             Connection.ShowOk();
         }
 
