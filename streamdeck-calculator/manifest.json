@@ -113,21 +113,6 @@
       "SupportedInMultiActions": true,
       "Tooltip": "Set a decimal point",
       "UUID": "com.saitho.calculator.point"
-    },
-    {
-      "Icon": "Images/icon",
-      "Name": "Text File Updater",
-      "States": [
-        {
-          "Image": "Images/key",
-          "TitleAlignment": "middle",
-          "FontSize": "12"
-        }
-      ],
-      "SupportedInMultiActions": true,
-      "Tooltip": "Overwrites the contents of a text file with a predefined string. Use to change overlay text during Stream",
-      "UUID": "com.saitho.calculator.textfileupdater",
-      "PropertyInspectorPath": "PropertyInspector/TextFileUpdater/TextFileUpdater.html"
     }
   ],
   "Author": "saitho",
