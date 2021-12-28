@@ -58,6 +58,20 @@
       "PropertyInspectorPath": "PropertyInspector/Set/Set.html"
     },
     {
+      "Icon": "Images/iconReset",
+      "Name": "Reset",
+      "States": [
+        {
+          "Image": "Images/keyReset",
+          "TitleAlignment": "center",
+          "FontSize": "16"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Reset current operation and numbers input",
+      "UUID": "com.saitho.calculator.reset"
+    },
+    {
       "Icon": "Images/iconResult",
       "Name": "Result",
       "States": [
