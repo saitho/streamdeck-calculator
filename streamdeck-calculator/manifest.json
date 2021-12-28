@@ -120,7 +120,7 @@
   "Name": "Calculator",
   "Icon": "Images/pluginIcon",
   "URL": "https://saitho.me/",
-  "Version": "1.0",
+  "Version": "1.1",
   "CodePath": "com.saitho.calculator",
   "Category": "Calculator",
   "CategoryIcon": "Images/categoryIcon",
