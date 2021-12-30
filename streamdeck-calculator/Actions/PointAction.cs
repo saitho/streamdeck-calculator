@@ -22,26 +22,14 @@ namespace saitho.Calculator.Actions
 
         public override void KeyPressed(KeyPayload payload)
         {
-            try
+            // check if decimal mode already enabled
+            if (CurrentNumberHolder.Instance.decimalMode)
             {
-                // check if decimal mode already enabled
-                DataStorage.getInstance().readMemory("decimalMode");
                 Connection.ShowAlert();
                 return;
             }
-            catch
-            {
-            }
-            
-            int currentNumber;
-            try
-            {
-                currentNumber = int.Parse(DataStorage.getInstance().readMemory("currentNumber"));
-            }
-            catch
-            {
-            }
-            DataStorage.getInstance().writeMemory("decimalMode", "1");
+
+            CurrentNumberHolder.Instance.decimalMode = true;
             Connection.ShowOk();
         }
 

@@ -8,9 +8,8 @@ namespace saitho.Calculator.Actions
     {
         #region Private Members
         const int SCENE_BORDER_SIZE = 20;
-        DataStorage data;
-
         #endregion
+
         protected abstract string BtnFilePath
         {
             get;

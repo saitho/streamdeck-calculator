@@ -22,79 +22,23 @@ namespace saitho.Calculator.Actions
 
         public override void KeyPressed(KeyPayload payload)
         {
-            DataStorage data = DataStorage.getInstance();
-            string operation;
-            try
-            {
-                operation = data.readMemory("operation");
-            }
-            catch
+            Calculator calculator = Calculator.Instance;
+            if (calculator.operation == null)
             {
                 Connection.ShowAlert();
                 return;
             }
 
-            bool decimalMode = false;
-            try
-            {
-                DataStorage.getInstance().readMemory("decimalMode");
-                decimalMode = true;
-            }
-            catch
-            {
-            }
+            float storedNumber = calculator.getCurrentResult();
+            float currentNumber = calculator.getInput();
+            float newNumber = calculator.performCalculation();
 
-            float storedNumber = 0;
-            if (data.hasResultFile())
-            {
-                try
-                {
-                    storedNumber = float.Parse(data.readResultFile());
-                }
-                catch
-                {
-                    Logger.Instance.LogMessage(TracingLevel.ERROR, "Unable to read result.txt");
-                    Connection.ShowAlert();
-                    return;
-                }
-            }
-
-            float currentNumber;
-            try
-            {
-                currentNumber = float.Parse(data.readMemory("currentNumber"));
-                if (decimalMode)
-                {
-                    string currentDecimalNumber = data.readMemory("currentDecimalNumber");
-                    double numberLength = currentDecimalNumber.Length;
-                    currentNumber += int.Parse(currentDecimalNumber) / (float)System.Math.Pow(10.0, numberLength);
-                }
-            }
-            catch
-            {
-                Connection.ShowAlert();
-                return;
-            }
-
-            float newNumber = storedNumber;
-            if (operation == "+")
-            {
-                newNumber += currentNumber;
-            }
-            else if (operation == "-")
-            {
-                newNumber -= currentNumber;
-            }
-
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"CALCULATE - {storedNumber} {operation} {currentNumber} = {newNumber}");
+            Logger.Instance.LogMessage(TracingLevel.INFO, $"CALCULATE - {storedNumber} {calculator.operation} {currentNumber} = {newNumber}");
 
             // Store number to file
-            data.writeResultFile(newNumber.ToString());
-
-            data.deleteMemory("operation");
-            data.deleteMemory("currentNumber");
-            data.deleteMemory("currentDecimalNumber");
-            data.deleteMemory("decimalMode");
+            DataStorage.Instance.writeResultFile(newNumber.ToString());
+            CurrentNumberHolder.Instance.reset();
+            calculator.reset();
             Connection.ShowOk();
         }
 

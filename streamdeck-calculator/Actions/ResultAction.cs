@@ -14,10 +14,9 @@ namespace saitho.Calculator.Actions
         public ResultAction(SDConnection connection, InitialPayload payload) : base(connection, payload) { }
 
         public override void OnTick() {
-            DataStorage data = DataStorage.getInstance();
             try
             {
-                Connection.SetTitleAsync(data.readResultFile());
+                Connection.SetTitleAsync(DataStorage.Instance.readResultFile());
             }
             catch
             {

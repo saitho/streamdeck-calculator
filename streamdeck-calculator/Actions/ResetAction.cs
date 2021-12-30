@@ -21,12 +21,8 @@ namespace saitho.Calculator.Actions
 
         public override void KeyPressed(KeyPayload payload)
         {
-            DataStorage data = DataStorage.getInstance();
             Logger.Instance.LogMessage(TracingLevel.INFO, $"Reset Key pressed");
-            data.deleteMemory("operation");
-            data.deleteMemory("currentNumber");
-            data.deleteMemory("currentDecimalNumber");
-            data.deleteMemory("decimalMode");
+            Calculator.Instance.reset();
             Connection.ShowOk();
         }
 

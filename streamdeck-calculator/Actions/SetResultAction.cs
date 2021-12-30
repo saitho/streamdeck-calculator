@@ -51,11 +51,9 @@ namespace saitho.Calculator.Actions
 
         public override void KeyPressed(KeyPayload payload)
         {
-            DataStorage data = DataStorage.getInstance();
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"SETRESULT - Setting result to {this.settings.Number}");
-
             // Store number to file
-            data.writeResultFile(this.settings.Number.ToString());
+            DataStorage.Instance.writeResultFile(this.settings.Number.ToString());
+            Logger.Instance.LogMessage(TracingLevel.INFO, $"SETRESULT - Setting result to {this.settings.Number}");
             Connection.ShowOk();
         }
 

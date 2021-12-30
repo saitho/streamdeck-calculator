@@ -7,8 +7,7 @@ using System.Threading.Tasks;
  * Number Action
  * 
  * This action can be set multiple times by the user, and they can configure a number.
- * If the button is pressed, the number will be as new digit to the current number in
- * "currentNumber" memory storage.
+ * If the button is pressed, the number will be as new digit to the current number.
  **/
 namespace saitho.Calculator.Actions
 {
@@ -54,47 +53,17 @@ namespace saitho.Calculator.Actions
 
         public override void KeyPressed(KeyPayload payload)
         {
-            try
-            {
-                DataStorage.getInstance().readMemory("operation");
-            }
-            catch
+            if (Calculator.Instance.operation == null)
             {
                 Connection.ShowAlert();
                 return;
             }
 
-            bool decimalMode = false;
-            try
-            {
-                DataStorage.getInstance().readMemory("decimalMode");
-                decimalMode = true;
-            }
-            catch
-            {
-            }
+            CurrentNumberHolder currentNumberHolder = CurrentNumberHolder.Instance;
+            string currentNumber = currentNumberHolder.currentNumber;
+            string newNumber = currentNumberHolder.add(this.settings.Number);
 
-            string memoryName = decimalMode ? "currentDecimalNumber" : "currentNumber";
-
-            // add to number in memory
-            string currentNumber = "";
-            try
-            {
-                currentNumber = DataStorage.getInstance().readMemory(memoryName);
-                if (!decimalMode)
-                {
-                    // parse integer number just to be safe.
-                    // do not parse in decimalMode as we will lose leading 0s
-                    currentNumber = int.Parse(currentNumber).ToString();
-                }
-            }
-            catch
-            {
-            }
-
-            string newNumber = currentNumber.ToString() + this.settings.Number;
-            Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber} ({memoryName})");
-            DataStorage.getInstance().writeMemory(memoryName, newNumber);
+            Logger.Instance.LogMessage(TracingLevel.INFO, $"Key Pressed - Old number: {currentNumber}, new number: {newNumber}{(currentNumberHolder.decimalMode ? " (decimal mode)" : "")}");
             Connection.ShowOk();
         }
 
