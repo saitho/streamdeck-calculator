@@ -3,41 +3,49 @@ using System.IO;
 
 namespace saitho.Calculator
 {
-    internal class DataStorage
+    public class DataStorage
     {
-        protected Dictionary<string, string> dictionary = new Dictionary<string, string>();
-
         protected static DataStorage instance = null;
 
         // File names
         protected string resultFileName = "result.txt";
 
-        public static DataStorage getInstance()
+        protected string fileStorageName = "";
+
+        public static DataStorage Instance
         {
-            if (instance == null)
+            get
             {
-                instance = new DataStorage();
+                if (instance == null)
+                {
+                    instance = new DataStorage();
+                }
+                return instance;
             }
-            return instance;
         }
 
-        public string readMemory(string key)
+        public void setFileStorageName(string fileStorageName)
         {
-            return dictionary[key];
+            this.fileStorageName = fileStorageName;
         }
 
-        public bool hasMemory(string key)
+        public string getFileStorageName()
         {
-            return dictionary.ContainsKey(key);
+            return this.fileStorageName;
         }
-        public void writeMemory(string key, string value) { dictionary[key] = value; }
-
-        public void deleteMemory(string key) { dictionary.Remove(key); }
-
-        protected string buildFullFilePath(string filePath)
+        protected string buildFullFilePath(string filePath, string overrideStorageName = "")
         {
             string roaming = System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData);
             string pluginPath = Path.Combine(roaming, "Elgato", "StreamDeck", "Plugins", "com.saitho.calculator.sdPlugin", "_data");
+
+            if (overrideStorageName != "")
+            {
+                pluginPath = Path.Combine(pluginPath, overrideStorageName);
+            } else if (this.fileStorageName != "")
+            {
+                pluginPath = Path.Combine(pluginPath, this.fileStorageName);
+            }
+
             return Path.Combine(pluginPath, filePath);
         }
 
@@ -47,9 +55,9 @@ namespace saitho.Calculator
             return File.Exists(fullFilePath);
         }
 
-        public string readFile(string filePath)
+        public string readFile(string filePath, string storageName = "")
         {
-            string fullFilePath = this.buildFullFilePath(filePath);
+            string fullFilePath = this.buildFullFilePath(filePath, storageName);
             string content = "";
 
             using (var fs = File.Open(fullFilePath, FileMode.OpenOrCreate, FileAccess.Read))
@@ -80,9 +88,9 @@ namespace saitho.Calculator
             return hasFile(resultFileName);
         }
 
-        public string readResultFile()
+        public string readResultFile(string storageName = "")
         {
-            return readFile(resultFileName);
+            return readFile(resultFileName, storageName);
         }
 
         public void writeResultFile(string content)
